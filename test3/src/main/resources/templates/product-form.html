@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add / Edit Product</title>
+</head>
+<body>
+    <h1 th:text="${product.id != null ? 'Edit Product' : 'Add Product'}"></h1>
+
+    <form th:if="${product.id != null}"
+          th:action="@{'/products/edit/' + ${product.id}}"
+          th:object="${product}" method="post">
+
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" /><br><br>
+
+        <label>Description:</label>
+        <input type="text" th:field="*{description}" /><br><br>
+
+        <label>Quantity:</label>
+        <input type="number" th:field="*{quantity}" /><br><br>
+
+        <label>Price:</label>
+        <input type="number" step="0.01" th:field="*{price}" /><br><br>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <form th:if="${product.id == null}"
+          th:action="@{/products/add}"
+          th:object="${product}" method="post">
+
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" /><br><br>
+
+        <label>Description:</label>
+        <input type="text" th:field="*{description}" /><br><br>
+
+        <label>Quantity:</label>
+        <input type="number" th:field="*{quantity}" /><br><br>
+
+        <label>Price:</label>
+        <input type="number" step="0.01" th:field="*{price}" /><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+
+    <br>
+    <a href="/products">Back to List</a>
+</body>
+</html>
