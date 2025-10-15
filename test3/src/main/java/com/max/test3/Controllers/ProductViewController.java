@@ -22,13 +22,13 @@ public class ProductViewController {
     @GetMapping
     public String listProducts(Model model) {
         model.addAttribute("products", productService.GetAllProducts());
-        return "product-list"; // maps to product-list.html
+        return "product-list";
     }
 
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("product", new Product());
-        return "product-form"; // maps to product-form.html
+        return "product-form";
     }
 
     @PostMapping("/add")
