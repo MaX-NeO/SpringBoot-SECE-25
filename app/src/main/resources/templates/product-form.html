@@ -1,51 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Product Form</title>
 </head>
-
 <body>
-    <h1>Add Form</h1>
-    <form>
-        <label for="name">
-            Name
-        </label>
-        <input type="text" name="name" id="">
-        <label for="desc">
-            Desc
-        </label>
-        <input type="number" name="desc" id="">
-        <label for="quantity">
-            Quantity
-        </label>
-        <input type="number" name="quantity" id="">
-        <label for="price">
-            Price
-        </label>
-        <input type="text" name="price" id="">
+    <h1 th:text="${product.id != null ? 'Edit Product' : 'Add Product'}"></h1>
 
-        <input type="submit" value="Add Product">
-    </form>
-    <h1> Edit Form</h1>
-    <form>
-        <label for="name">
-            Name
-        </label>
-        <input type="text" name="name" id="">
-        <label for="desc">
-            Desc
-        </label>
-        <input type="text" name="desc" id="">
-        <label for="quantity">
-            Quantity
-        </label>
-        <input type="text" name="quantity" id="">
-        <label for="price">
-            Price
-        </label>
-        <input type="text" name="price" id="">
+    <form th:action="@{${product.id != null} ? '/products/edit/' + ${product.id} : '/products/add'}"
+          th:object="${product}"
+          method="post">
 
-        <input type="submit" value="Update Product">
+        <label>Name</label>
+        <input type="text" th:field="*{name}" placeholder="Enter name"/><br>
+
+        <label>Description</label>
+        <input type="text" th:field="*{description}" placeholder="Enter description"/><br>
+
+        <label>Quantity</label>
+        <input type="number" th:field="*{quantity}" placeholder="Enter quantity"/><br>
+
+        <label>Price</label>
+        <input type="text" th:field="*{price}" placeholder="Enter price"/><br>
+
+        <button type="submit" th:text="${product.id != null ? 'Update' : 'Add'}"></button>
     </form>
+
+    <a href="/products">Back to List</a>
 </body>
-
 </html>
