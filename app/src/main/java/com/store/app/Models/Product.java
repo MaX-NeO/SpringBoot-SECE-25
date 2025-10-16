@@ -20,6 +20,7 @@ public class Product {
     private int quantity;
     private float price;
 
+    
     public Long getId() {
         return id;
     }

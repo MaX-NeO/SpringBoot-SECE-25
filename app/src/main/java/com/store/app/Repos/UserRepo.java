@@ -1,6 +1,11 @@
 package com.store.app.Repos;
 
 //extends to JPARepo <User, Long>
-public interface UserRepo {
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.store.app.Models.User;
+
+public interface UserRepo extends  JpaRepository<User, Long>{
 
 }
