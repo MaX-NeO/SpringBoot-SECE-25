@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Product Form</title>
+    <title th:text="${product.id != null ? 'Edit Product' : 'Add Product'}"></title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+
 </head>
+
 <body>
-    <h1 th:text="${product.id != null ? 'Edit Product' : 'Add Product'}"></h1>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <span th:text="${product.id != null ? 'Edit Product' : 'Add Product'}"></span>
+        </div>
+        <div class="navbar-right">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/products}">Products</a>
+            <a th:href="@{/users}">Users</a>
+            <a th:href="@{/orders}">Orders</a>
+        </div>
+    </nav>
+    <div class="page-data">
+        <h1 th:text="${product.id != null ? 'Edit Product' : 'Add Product'}"></h1>
 
-    <form th:action="@{${product.id != null} ? '/products/edit/' + ${product.id} : '/products/add'}"
-          th:object="${product}"
-          method="post">
+        <form th:action="@{${product.id != null} ? '/products/edit/' + ${product.id} : '/products/add'}"
+            th:object="${product}" method="post">
 
-        <label>Name</label>
-        <input type="text" th:field="*{name}" placeholder="Enter name"/><br>
+            <label>Name</label>
+            <input type="text" th:field="*{name}" placeholder="Enter name" /><br>
 
-        <label>Description</label>
-        <input type="text" th:field="*{description}" placeholder="Enter description"/><br>
+            <label>Description</label>
+            <input type="text" th:field="*{description}" placeholder="Enter description" /><br>
 
-        <label>Quantity</label>
-        <input type="number" th:field="*{quantity}" placeholder="Enter quantity"/><br>
+            <label>Quantity</label>
+            <input type="number" th:field="*{quantity}" placeholder="Enter quantity" /><br>
 
-        <label>Price</label>
-        <input type="text" th:field="*{price}" placeholder="Enter price"/><br>
+            <label>Price</label>
+            <input type="text" th:field="*{price}" placeholder="Enter price" /><br>
 
-        <button type="submit" th:text="${product.id != null ? 'Update' : 'Add'}"></button>
-    </form>
+            <button type="submit" th:text="${product.id != null ? 'Update' : 'Add'}"></button>
+        </form>
 
-    <a href="/products">Back to List</a>
+        <a href="/products">Back to List</a>
+    </div>
 </body>
+
 </html>

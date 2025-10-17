@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Store Home</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <span>Store App</span>
+        </div>
+        <div class="navbar-right">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/products}">Products</a>
+            <a th:href="@{/users}">Users</a>
+            <a th:href="@{/orders}">Orders</a>
+        </div>
+    </nav>
+
+    <div class="page-data">
+        <div class="cardcontainer">
+            <a th:href="@{/products}">
+                <div class="card">
+                    <h2>Products</h2>
+                    <p th:text="${productsCount}">0</p>
+                </div>
+            </a>
+            <a th:href="@{/users}">
+                <div class="card">
+                    <h2>Users</h2>
+                    <p th:text="${usersCount}">0</p>
+                </div>
+            </a>
+            <a th:href="@{/orders}">
+                <div class="card">
+                    <h2>Orders</h2>
+                    <p th:text="${ordersCount}">0</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

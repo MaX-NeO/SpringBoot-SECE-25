@@ -16,7 +16,7 @@ import com.store.app.Models.User;
 import com.store.app.Services.UserService;
 
 @RestController
-@RequestMapping ("/users")
+@RequestMapping ("/api/users")
 public class UserController {
 
     //getmapping "/all"

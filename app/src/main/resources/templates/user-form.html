@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title th:text="${user.id != null ? 'Edit User' : 'Add User'}"></title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <span th:text="${user.id != null ? 'Edit User' : 'Add User'}"></span>
+        </div>
+        <div class="navbar-right">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/products}">Products</a>
+            <a th:href="@{/users}">Users</a>
+            <a th:href="@{/orders}">Orders</a>
+        </div>
+    </nav>
+    <div class="page-data">
+        <h1 th:text="${user.id != null ? 'Edit User' : 'Add User'}"></h1>
+
+        <form th:action="@{${user.id != null} ? '/users/edit/' + ${user.id} : '/users/add'}" th:object="${user}"
+            method="post">
+
+            <label>Name</label>
+            <input type="text" th:field="*{name}" placeholder="Enter name" /><br>
+
+            <label>Email</label>
+            <input type="email" th:field="*{email}" placeholder="Enter email" /><br>
+
+            <label>Phone</label>
+            <input type="text" th:field="*{phone}" placeholder="Enter phone" /><br>
+
+            <label>Password</label>
+            <input type="password" th:field="*{password}" placeholder="Enter password" /><br>
+
+            <button type="submit" th:text="${user.id != null ? 'Update' : 'Add'}"></button>
+        </form>
+
+        <a href="/users">Back to List</a>
+    </div>
+</body>
+
+</html>

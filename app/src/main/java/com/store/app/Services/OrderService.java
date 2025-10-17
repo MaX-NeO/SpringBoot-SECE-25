@@ -1,6 +1,7 @@
 package com.store.app.Services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,10 @@ public class OrderService {
         }
         return null;
     }
-
+    public Order getOrderById(Long id) {
+        Optional<Order> order = orderRepo.findById(id);
+        return order.orElse(null);
+    }
     public String deleteOrder(Long id) {
         Order foundOrder = orderRepo.findById(id).orElse(null);
         if (foundOrder != null) {

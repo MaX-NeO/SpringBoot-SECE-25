@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Orders</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+
+    <nav class="navbar">
+        <div class="navbar-left">
+            <span>Orders</span>
+        </div>
+        <div class="navbar-right">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/products}">Products</a>
+            <a th:href="@{/users}">Users</a>
+            <a th:href="@{/orders}">Orders</a>
+        </div>
+    </nav>
+    <div class="page-data">
+        <a href="/orders/add">Add New Order</a>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Order Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Products</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.id}"></td>
+                    <td th:text="${order.user != null ? order.user.name : 'N/A'}"></td>
+                    <td th:text="${order.orderDate}"></td>
+                    <td th:text="${order.total}"></td>
+                    <td th:text="${order.status}"></td>
+                    <td>
+                        <span th:each="p : ${order.productNames}" th:text="${p} + ' '"></span>
+                    </td>
+                    <td>
+                        <a th:href="@{'/orders/edit/' + ${order.id}}">Edit</a> |
+                        <a th:href="@{'/orders/delete/' + ${order.id}}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

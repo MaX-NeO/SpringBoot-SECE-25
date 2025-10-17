@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Products</title>
+    <title>Users</title>
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <nav class="navbar">
         <div class="navbar-left">
-            <span>Products</span>
+            <span>Users</span>
         </div>
         <div class="navbar-right">
             <a th:href="@{/}">Home</a>
@@ -19,26 +19,28 @@
         </div>
     </nav>
     <div class="page-data">
-        <a href="/products/add">Add New Product</a>
+        <a href="/users/add">Add New User</a>
         <table border="1">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Password</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="product : ${products}">
-                    <td th:text="${product.name}"></td>
-                    <td th:text="${product.description}"></td>
-                    <td th:text="${product.price}"></td>
-                    <td th:text="${product.quantity}"></td>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.phone}"></td>
+                    <td th:text="${user.password}"></td>
                     <td>
-                        <a th:href="@{'/products/edit/' + ${product.id}}">Edit</a> |
-                        <a th:href="@{'/products/delete/' + ${product.id}}">Delete</a>
+                        <a th:href="@{'/users/edit/' + ${user.id}}">Edit</a> |
+                        <a th:href="@{'/users/delete/' + ${user.id}}">Delete</a>
                     </td>
                 </tr>
             </tbody>
